@@ -8,13 +8,13 @@
 
 | REACT / REDUX                                                                                                                                                      | VUE  | REACT NATIVE |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---- | ------------ |
-| [**React / Redux**<br/> ![React / Redux](https://i.imgur.com/A4FghHv.png =200x) ](https://github.com/uliaaan/rettiwt/tree/master/react-redux)<br /> With socket io | SOON | SOON         |
+| [**React / Redux**<br/> ![React / Redux](https://i.imgur.com/tvQw8EJ.png) ](https://github.com/uliaaan/rettiwt/tree/master/react-redux)<br /> With socket io | SOON | SOON         |
 
 ## Frontends
 
 | NODE / EXPRESS                                                                                                                                                   | NODE / KOA |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| [**Node / Express**<br/> ![NODE / Express](https://i.imgur.com/ElRyJHo.png =200x) ](https://github.com/uliaaan/rettiwt/tree/master/express)<br /> With socket io | SOON       |
+| [**Node / Express**<br/> ![NODE / Express](https://i.imgur.com/JPrsf1x.png) ](https://github.com/uliaaan/rettiwt/tree/master/express)<br /> With socket io | SOON       |
 
 ## Functional
 
