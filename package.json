@@ -1,0 +1,21 @@
+{
+  "name": "react-redux-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "cd express && npm install && npm start",
+    "client": "cd react-redux && npm start",
+    "start": "cd express && npm install && npm start",
+    "heroku-postbuild": "cd react-redux && yarn && yarn run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^3.6.1",
+    "yarn": "^1.10.1",
+    "nodemon": "^1.17.3"
+  }
+}

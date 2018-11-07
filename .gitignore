@@ -1,6 +1,7 @@
 # dependencies
 /react-redux/node_modules
 /express/node_modules
+/node_modules
 
 # production
 /react-redux/build
