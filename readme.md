@@ -1,6 +1,8 @@
 ## RETTIWT
 
-### **RETTIWT**- twitter analog on js
+### **RETTIWT** - Twitter clone powered by javascript frameworks
+
+Express + React + Redux + Socet.io - [DEMO](https://rettiwt-express-react-redux.herokuapp.com/ 'DEMO')
 
 ![RETTIWT main page](http://getcover.ru/i/6zdyj1541534834.85/pwiv8.png)
 

@@ -4,9 +4,6 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "cd express && npm install && npm start",
-    "client": "cd react-redux && npm start",
     "start": "cd express && npm install && npm start",
     "heroku-postbuild": "cd react-redux && yarn && yarn run build"
   },
