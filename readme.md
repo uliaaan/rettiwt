@@ -1,22 +1,24 @@
 ## RETTIWT
-
 ### **RETTIWT** - Twitter clone powered by javascript frameworks
 
 Express + React + Redux + Socet.io - [DEMO](https://rettiwt-express-react-redux.herokuapp.com/ 'DEMO')
 
-![RETTIWT main page](http://getcover.ru/i/6zdyj1541534834.85/pwiv8.png)
+![RETTIWT main page](https://github.com/uliaaan/rettiwt/blob/master/images/main.png?raw=true)
+
+## Socket example
+![Socket example](https://github.com/uliaaan/rettiwt/blob/master/images/socket-example.gif)
 
 ## Frontends
 
-| REACT / REDUX | VUE  | REACT NATIVE |
+| REACT / REDUX | VUE | REACT NATIVE |
 |-------------- | ---- | ------------ |
-| [**React / Redux**<br/> ![React / Redux](https://i.imgur.com/tvQw8EJ.png) ](https://github.com/uliaaan/rettiwt/tree/master/react-redux)<br /> With socket io | SOON | SOON         |
+| [**React / Redux**<br/> ![React / Redux](https://github.com/uliaaan/rettiwt/blob/master/images/react-redux.png?raw=true) ](https://github.com/uliaaan/rettiwt/tree/master/react-redux)<br  /> With socket io | SOON | SOON |
 
 ## Backends
 
 | NODE / EXPRESS / MONGODB | NODE / KOA |
 |--------------- | ---------- |
-| [**Node / Express / MongoDB**<br/> ![NODE / Express / MongoDB](https://i.imgur.com/JPrsf1x.png) ](https://github.com/uliaaan/rettiwt/tree/master/express)<br /> With socket io | SOON       |
+| [**Node / Express / MongoDB**<br/> ![NODE / Express / MongoDB](https://github.com/uliaaan/rettiwt/blob/master/images/node-express.png?raw=true) ](https://github.com/uliaaan/rettiwt/tree/master/express)<br  /> With socket io | SOON |
 
 ## Functional
 
@@ -29,5 +31,5 @@ Express + React + Redux + Socet.io - [DEMO](https://rettiwt-express-react-redux.
 - [x] List of following users post
 - [x] Profile
 - [x] Search by user
-- [ ] Followers list
-- [ ] Followings list
+- [] Followers list
+- [] Followings list
