@@ -1,7 +1,10 @@
 # dependencies
 /react-redux/node_modules
 /express/node_modules
+/react-native/node_modules
+/vue-vuex/node_modules
 /node_modules
+/react-native
 
 # production
 /react-redux/build
