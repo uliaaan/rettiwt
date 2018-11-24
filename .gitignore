@@ -8,6 +8,7 @@
 
 # production
 /react-redux/build
+/vue-vuex/dist
 
 # misc
 .DS_Store

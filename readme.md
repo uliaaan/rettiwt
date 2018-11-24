@@ -2,6 +2,7 @@
 ### **RETTIWT** - Twitter clone powered by javascript frameworks
 
 Express + React + Redux + Socet.io - [DEMO](https://rettiwt-express-react-redux.herokuapp.com/ 'DEMO')
+Express + Vue + Vuex + Socet.io - [DEMO](https://rettiwt-express-vue-vuex.herokuapp.com/ 'DEMO')
 
 ![RETTIWT main page](https://github.com/uliaaan/rettiwt/blob/master/images/main.png?raw=true)
 
@@ -10,9 +11,10 @@ Express + React + Redux + Socet.io - [DEMO](https://rettiwt-express-react-redux.
 
 ## Frontends
 
-| REACT / REDUX | VUE | REACT NATIVE |
+| REACT / REDUX | VUE / VUEX | REACT NATIVE |
 |-------------- | ---- | ------------ |
-| [**React / Redux**<br/> ![React / Redux](https://github.com/uliaaan/rettiwt/blob/master/images/react-redux.png?raw=true) ](https://github.com/uliaaan/rettiwt/tree/master/react-redux)<br  /> With socket io | SOON | SOON |
+| [**React / Redux**<br/> ![React / Redux](https://github.com/uliaaan/rettiwt/blob/master/images/react-redux.png?raw=true) ](https://github.com/uliaaan/rettiwt/tree/master/react-redux)<br  /> With socket io 
+|  [**Vue / Vuex**<br/> ![Vue / Vuex](https://github.com/uliaaan/rettiwt/blob/master/images/vue-vuex.png?raw=true) ](https://github.com/uliaaan/rettiwt/tree/master/vue-vuex)<br  /> With socket io | SOON |
 
 ## Backends
 
@@ -31,5 +33,5 @@ Express + React + Redux + Socet.io - [DEMO](https://rettiwt-express-react-redux.
 - [x] List of following users post
 - [x] Profile
 - [x] Search by user
-- [] Followers list
-- [] Followings list
+- [ ] Followers list
+- [ ] Followings list
