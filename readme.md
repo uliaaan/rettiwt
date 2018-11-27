@@ -20,17 +20,3 @@ Express + Vue + Vuex + Socet.io - [DEMO](https://rettiwt-express-vue-vuex.heroku
 | NODE / EXPRESS / MONGODB | NODE / KOA |
 |--------------- | ---------- |
 | [**Node / Express / MongoDB**<br/> ![NODE / Express / MongoDB](https://github.com/uliaaan/rettiwt/blob/master/images/node-express.png?raw=true) ](https://github.com/uliaaan/rettiwt/tree/master/express)<br  /> With socket io | SOON |
-
-## Functional
-
-- [x] Registration
-- [x] Authorization
-- [x] Add post
-- [x] Follow user
-- [x] Unfollow user
-- [x] List of all post
-- [x] List of following users post
-- [x] Profile
-- [x] Search by user
-- [ ] Followers list
-- [ ] Followings list
