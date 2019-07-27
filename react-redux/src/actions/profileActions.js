@@ -9,7 +9,6 @@ import {
   PROFILE_LOADING
 } from './types';
 
-// List with posts
 export const getPostsByUserId = userId => dispatch => {
   dispatch(postsLoading());
   axios
@@ -25,18 +24,6 @@ export const getPostsByUserId = userId => dispatch => {
 
 export const getUserProfile = userId => dispatch => {
   dispatch(profileLoading());
-  axios
-    .get(`/api/users/${userId}`)
-    .then(res =>
-      dispatch({
-        type: GET_PROFILE,
-        payload: res.data
-      })
-    )
-    .catch(err => console.log(err));
-};
-
-export const refreshUserProfile = userId => dispatch => {
   axios
     .get(`/api/users/${userId}`)
     .then(res =>

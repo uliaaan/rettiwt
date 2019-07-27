@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -31,104 +31,85 @@ const styles = {
   }
 };
 
-class Header extends Component {
-  state = {
-    anchorEl: null
-  };
+const Header = ({ logoutUser, history, classes, auth }) => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
 
-  onLogoutClick = () => {
-    this.handleClose();
-    this.props.logoutUser(this.props.history);
-  };
-
-  handleOpen = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
-
-  render() {
-    const { isAuthenticated, user } = this.props.auth;
-    const { classes } = this.props;
-    const { anchorEl } = this.state;
-
-    const authLinks = (
-      <>
-        <IconButton
-          aria-owns={anchorEl ? 'menu' : undefined}
-          aria-haspopup="true"
-          onClick={this.handleOpen}
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <Menu
-          id="menu"
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={this.handleClose}
-        >
-          <MenuItem>
-            <Link to={`/profile/${user && user.id}`} onClick={this.handleClose}>
-              Profile
-            </Link>
-          </MenuItem>
-          <MenuItem>
-            <Link to="#" onClick={this.onLogoutClick.bind(this)}>
-              Logout
-            </Link>
-          </MenuItem>
-        </Menu>
-      </>
-    );
-
-    const guestLinks = (
-      <>
-        <IconButton
-          aria-owns={anchorEl ? 'menu' : undefined}
-          aria-haspopup="true"
-          onClick={this.handleOpen}
-          color="inherit"
-        >
-          <MoreIcon />
-        </IconButton>
-        <Menu
-          id="menu"
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={this.handleClose}
-        >
-          <MenuItem>
-            <Link to="/login" onClick={this.handleClose}>
-              Login
-            </Link>
-          </MenuItem>
-          <MenuItem>
-            <Link to="/register" onClick={this.handleClose}>
-              Register
-            </Link>
-          </MenuItem>
-        </Menu>
-      </>
-    );
-
-    return (
-      <div className={classes.root}>
-        <AppBar position="static" className={classes.menu}>
-          <Toolbar className={classes.space}>
-            <Link to="/" className={classes.logo}>
-              RETTIWT
-            </Link>
-            <Search />
-            {isAuthenticated ? authLinks : guestLinks}
-          </Toolbar>
-        </AppBar>
-      </div>
-    );
+  function handleClick(event) {
+    setAnchorEl(event.currentTarget);
   }
-}
+
+  function handleClose() {
+    setAnchorEl(null);
+  }
+
+  const authLinks = (
+    <>
+      <IconButton
+        aria-owns={anchorEl ? 'menu' : undefined}
+        aria-haspopup="true"
+        onClick={handleClick}
+        color="inherit"
+      >
+        <AccountCircle />
+      </IconButton>
+      <Menu id="menu" anchorEl={anchorEl} open={open} onClose={handleClose}>
+        <MenuItem>
+          <Link
+            to={`/profile/${auth.user && auth.user.id}`}
+            onClick={handleClose}
+          >
+            Profile
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link to="#" onClick={() => logoutUser(history)}>
+            Logout
+          </Link>
+        </MenuItem>
+      </Menu>
+    </>
+  );
+
+  const guestLinks = (
+    <>
+      <IconButton
+        aria-owns={anchorEl ? 'menu' : undefined}
+        aria-haspopup="true"
+        onClick={handleClick}
+        color="inherit"
+      >
+        <MoreIcon />
+      </IconButton>
+      <Menu id="menu" anchorEl={anchorEl} open={open} onClose={handleClose}>
+        <MenuItem>
+          <Link to="/login" onClick={handleClose}>
+            Login
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link to="/register" onClick={handleClose}>
+            Register
+          </Link>
+        </MenuItem>
+      </Menu>
+    </>
+  );
+
+  return (
+    <div className={classes.root}>
+      <AppBar position="static" className={classes.menu}>
+        <Toolbar className={classes.space}>
+          <Link to="/" className={classes.logo}>
+            RETTIWT
+          </Link>
+          <Search />
+          {auth.isAuthenticated ? authLinks : guestLinks}
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+};
 
 Header.propTypes = {
   logoutUser: PropTypes.func.isRequired,

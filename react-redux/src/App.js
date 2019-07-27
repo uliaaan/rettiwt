@@ -12,7 +12,7 @@ import Home from './components/Home';
 import NotFound from './components/Main/NotFound';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
-import Profile from './components/Profile/Profile';
+import Profile from './components/Profile';
 import Search from './components/Search/NotFound';
 
 if (localStorage.jwtToken) {

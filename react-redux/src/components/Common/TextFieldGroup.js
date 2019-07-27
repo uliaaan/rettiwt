@@ -38,33 +38,31 @@ const TextFieldGroup = ({
   classes
 }) => {
   return (
-    <div>
-      <TextField
-        error={error ? true : false}
-        id={name}
-        label={label}
-        name={name}
-        type={type}
-        value={value}
-        onChange={onChange}
-        disabled={disabled}
-        helperText={error ? error : null}
-        className={classes.filed}
-        InputLabelProps={{
-          classes: {
-            root: classes.cssLabel,
-            focused: classes.cssFocused
-          }
-        }}
-        InputProps={{
-          classes: {
-            root: classes.cssOutlinedInput,
-            focused: classes.cssFocused,
-            underline: classes.cssUnderline
-          }
-        }}
-      />
-    </div>
+    <TextField
+      error={error ? true : false}
+      id={name}
+      label={label}
+      name={name}
+      type={type}
+      value={value}
+      onChange={onChange}
+      disabled={disabled}
+      helperText={error ? error : null}
+      className={classes.filed}
+      InputLabelProps={{
+        classes: {
+          root: classes.cssLabel,
+          focused: classes.cssFocused
+        }
+      }}
+      InputProps={{
+        classes: {
+          root: classes.cssOutlinedInput,
+          focused: classes.cssFocused,
+          underline: classes.cssUnderline
+        }
+      }}
+    />
   );
 };
 

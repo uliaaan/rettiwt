@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -21,7 +21,7 @@ const styles = theme => ({
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing.unit,
+      marginLeft: theme.spacing(1),
       width: 'auto'
     }
   },
@@ -34,10 +34,10 @@ const styles = theme => ({
     width: '100%'
   },
   inputInput: {
-    paddingTop: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit * 2,
+    paddingTop: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+    paddingLeft: theme.spacing(1) * 2,
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('sm')]: {
@@ -46,58 +46,44 @@ const styles = theme => ({
   }
 });
 
-class Form extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text: ''
-    };
+const Form = ({ classes, history, searchUser }) => {
+  const [text, setText] = React.useState('');
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange = e => {
-    this.setState({ text: e.target.value });
+  const handleChange = e => {
+    setText(e.target.value);
   };
 
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    const searchData = {
-      text: this.state.text.toLowerCase()
-    };
-    this.props.searchUser(searchData, this.props.history);
-    this.setState({ text: '' });
+    searchUser({ text }, history);
+    setText('');
   };
 
-  render() {
-    const { classes } = this.props;
-    return (
-      <>
-        <form onSubmit={this.handleSubmit} className={classes.search}>
-          <InputBase
-            placeholder="Search users"
-            autoComplete="off"
-            classes={{
-              root: classes.inputRoot,
-              input: classes.inputInput
-            }}
-            value={this.state.text}
-            onChange={this.handleChange}
-          />
-          <IconButton
-            className={classes.searchIcon}
-            onClick={this.handleSubmit}
-            aria-label="Search"
-            type="submit"
-          >
-            <SearchIcon />
-          </IconButton>
-        </form>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <form onSubmit={handleSubmit} className={classes.search}>
+        <InputBase
+          placeholder="Search users"
+          autoComplete="off"
+          classes={{
+            root: classes.inputRoot,
+            input: classes.inputInput
+          }}
+          value={text}
+          onChange={handleChange}
+        />
+        <IconButton
+          className={classes.searchIcon}
+          onClick={handleSubmit}
+          aria-label="Search"
+          type="submit"
+        >
+          <SearchIcon />
+        </IconButton>
+      </form>
+    </>
+  );
+};
 
 Form.propTypes = {
   classes: PropTypes.object.isRequired,

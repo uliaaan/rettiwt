@@ -1,15 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import List from './Posts/List';
+import Posts from './Posts';
 import Login from './Auth/Login';
+import Form from './Form';
 
-class Home extends Component {
-  render() {
-    const { auth } = this.props;
-    return auth ? <List /> : <Login />;
-  }
-}
+const Home = ({ auth }) => {
+  if (!auth) return <Login />;
+
+  return (
+    <>
+      <Form />
+      <Posts />
+    </>
+  );
+};
 
 Home.propTypes = {
   auth: PropTypes.bool

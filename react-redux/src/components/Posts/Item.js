@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
-import calcTime from '../../utils/timeConverter';
 
 const styles = {
   paper: {
@@ -39,7 +38,9 @@ const Item = ({ post, classes }) => {
       <div>
         <h3 className={classes.login}>
           <Link to={`/profile/${post.user.id}`}>{post.user.login}</Link>
-          <span className={classes.time}>{calcTime(post.createdAt)}</span>
+          <span className={classes.time}>
+            {new Date(post.createdAt).toLocaleDateString('en-EN')}
+          </span>
         </h3>
         {post.text}
       </div>

@@ -1,4 +1,9 @@
-import { GET_PROFILE, PROFILE_LOADING } from '../actions/types';
+import {
+  GET_PROFILE,
+  PROFILE_LOADING,
+  FOLLOW,
+  UNFOLLOW
+} from '../actions/types';
 
 const initialState = {
   user: null,
@@ -17,6 +22,24 @@ export default function(state = initialState, action) {
         ...state,
         user: action.payload,
         loading: false
+      };
+    case FOLLOW:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          followers: [...state.user.followers, action.payload]
+        }
+      };
+    case UNFOLLOW:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          followers: state.user.followers.filter(
+            item => item !== action.payload
+          )
+        }
       };
     default:
       return state;

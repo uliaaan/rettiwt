@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
@@ -6,76 +6,49 @@ import { loginUser } from '../../actions/authActions';
 import TextFieldGroup from '../Common/TextFieldGroup';
 import Btn from '../Common/Btn';
 
-class Login extends Component {
-  constructor() {
-    super();
-    this.state = {
-      email: '',
-      password: '',
-      errors: {}
-    };
+const Login = ({ loginUser, auth, history, errors }) => {
+  const [form, setValues] = React.useState({
+    email: '',
+    password: ''
+  });
 
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
+  React.useEffect(() => {
+    if (auth.isAuthenticated) history.push('/');
+  }, [auth.isAuthenticated, errors, history]);
 
-  componentDidMount() {
-    if (this.props.auth.isAuthenticated) {
-      this.props.history.push('/');
-    }
-  }
+  const onChange = e => {
+    setValues({ ...form, [e.target.name]: e.target.value });
+  };
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.auth.isAuthenticated) {
-      this.props.history.push('/');
-    }
-
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
-    }
-  }
-
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  onSubmit(e) {
+  const onSubmit = e => {
     e.preventDefault();
-    const userData = {
-      email: this.state.email,
-      password: this.state.password
-    };
+    loginUser(form);
+  };
 
-    this.props.loginUser(userData);
-  }
-
-  render() {
-    const { errors } = this.state;
-    return (
-      <Paper style={{ padding: 20 }}>
-        <form onSubmit={this.onSubmit}>
-          <TextFieldGroup
-            name="email"
-            type="email"
-            value={this.state.email}
-            onChange={this.onChange}
-            error={errors.email}
-            label="Email"
-          />
-          <TextFieldGroup
-            name="password"
-            type="password"
-            value={this.state.password}
-            onChange={this.onChange}
-            error={errors.password}
-            label="Password"
-          />
-          <Btn variant="outlined" type="submit" value="Submit" />
-        </form>
-      </Paper>
-    );
-  }
-}
+  return (
+    <Paper style={{ padding: 20 }}>
+      <form onSubmit={onSubmit}>
+        <TextFieldGroup
+          name="email"
+          type="email"
+          value={form.email}
+          onChange={onChange}
+          error={errors.email}
+          label="Email"
+        />
+        <TextFieldGroup
+          name="password"
+          type="password"
+          value={form.password}
+          onChange={onChange}
+          error={errors.password}
+          label="Password"
+        />
+        <Btn variant="outlined" type="submit" value="Submit" />
+      </form>
+    </Paper>
+  );
+};
 
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,

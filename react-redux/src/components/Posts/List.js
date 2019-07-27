@@ -1,91 +1,22 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import socket from '../../socket';
-import {
-  getPosts,
-  addedPost,
-  getPostsByFollowingUsers
-} from '../../actions/postActions';
+import React from 'react';
+
 import Item from './Item';
-import Form from './Form';
 import Process from '../Common/Process';
 
-class List extends Component {
-  state = {
-    allPosts: false
-  };
+const List = ({ list, loading }) => {
+  const renderEmpty = () => <h3 style={{ textAlign: 'center' }}>No posts</h3>;
 
-  componentDidMount() {
-    socket.instance.on('newPost', data => {
-      console.log(`newPost: ${JSON.stringify(data)}`);
-      this.props.addedPost(data);
-    });
-    this.props.getPostsByFollowingUsers(this.props.following);
-  }
+  if (!list.length) return renderEmpty();
 
-  componentWillUnmount() {
-    socket.instance.removeListener('newPost');
-  }
+  if (loading) return <Process />;
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.allPosts !== this.state.allPosts) {
-      this.state.allPosts
-        ? this.props.getPosts()
-        : this.props.getPostsByFollowingUsers(this.props.following);
-    }
-  }
-
-  handleSwitch = () => {
-    this.setState({ allPosts: !this.state.allPosts });
-  };
-
-  render() {
-    const { list, loading, following } = this.props;
-    const { allPosts } = this.state;
-
-    let items;
-    items = list && list.map(el => <Item post={el} key={el._id} />);
-    if (!allPosts && following.length === 0) {
-      items = <h3 style={{ textAlign: 'center' }}>Follow anyone</h3>;
-    }
-
-    return (
-      <div>
-        <Form />
-        <FormControlLabel
-          control={
-            <Switch
-              checked={allPosts}
-              onChange={this.handleSwitch}
-              aria-label="LoginSwitch"
-            />
-          }
-          label={allPosts ? 'All Posts' : 'Posts By Following Users'}
-        />
-        {loading ? <Process /> : items}
-      </div>
-    );
-  }
-}
-
-List.propTypes = {
-  getPosts: PropTypes.func.isRequired,
-  getPostsByFollowingUsers: PropTypes.func.isRequired,
-  addedPost: PropTypes.func.isRequired,
-  list: PropTypes.array,
-  following: PropTypes.array
+  return (
+    <>
+      {list.map(el => (
+        <Item post={el} key={el._id} />
+      ))}
+    </>
+  );
 };
 
-const mapStateToProps = state => ({
-  list: state.posts.list,
-  loading: state.posts.loading,
-  following: state.auth.user.following
-});
-
-export default connect(
-  mapStateToProps,
-  { getPosts, addedPost, getPostsByFollowingUsers }
-)(List);
+export default List;
